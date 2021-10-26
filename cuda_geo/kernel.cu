@@ -103,7 +103,7 @@ int main(int argc, char* argv[]) {
 		cudaMemcpy(b_gpu, b, X * sizeof(float), cudaMemcpyHostToDevice);
 
 		// run cuda
-		ndvi << < num_blocks, block_size >> > (a_gpu, b_gpu, result_gpu, X);
+		ndvi << < num_blocks, block_size >> > (b_gpu, a_gpu, result_gpu, X);
 
 		// get data from gpu
 		cudaMemcpy(tmp, result_gpu,
